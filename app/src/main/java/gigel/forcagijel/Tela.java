@@ -99,14 +99,15 @@ public class Tela extends AppCompatActivity {
     }
 
     public void trocarJogador(Jogador player){
-        Log.d("LOOOG", player.nome);
 
         if(player.nome.equals("A")){
             background.setBackgroundColor(getResources().getColor(R.color.ja));
         } else if(player.nome.equals("B")){
             background.setBackgroundColor(getResources().getColor(R.color.jb));
-        } else {
+        } else if(player.nome.equals("C")){
             background.setBackgroundColor(getResources().getColor(R.color.jc));
+        } else{
+            background.setBackgroundColor(getResources().getColor(R.color.jm));
         }
 
         nomeTela.setText(player.nome);

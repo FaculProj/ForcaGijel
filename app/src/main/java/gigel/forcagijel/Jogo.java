@@ -10,6 +10,7 @@ public class Jogo {
     Jogador ja = new Jogador("A");
     Jogador jb = new Jogador("B");
     Jogador jc = new Jogador("C");
+    Jogador jogadorMorto = new Jogador("M");
 
     private Reu reu = new Reu();
     private boolean vezJogador;
@@ -36,6 +37,7 @@ public class Jogo {
         RespostaPalavra r2 = p2.verificarChute(chute);
 
         boolean acertou = false;
+        boolean vivo = false;
 
         if(r1.acertou || r2.acertou){
             acertou = true;
@@ -43,7 +45,11 @@ public class Jogo {
             reu.perderVida();
         }
 
-        return new RespostaTela(r1.oculta, r2.oculta, acertou, reu.vivo, reu.vidasPerdidas);
+        if(jogadorAtual.vivo && reu.vivo){
+            vivo = true;
+        }
+
+        return new RespostaTela(r1.oculta, r2.oculta, acertou, vivo, reu.vidasPerdidas);
     }
 
 
@@ -53,26 +59,34 @@ public class Jogo {
         RespostaPalavra r2 = p2.verificarTentativa(tentativa2);
 
         boolean acertou = false;
+        boolean vivo = false;
 
         if(r1.acertou || r2.acertou){
             acertou = true;
         } else{
-            reu.perderVida();
+            jogadorAtual.morrer();
         }
 
-        return new RespostaTela(r1.oculta, r2.oculta, acertou, reu.vivo, reu.vidasPerdidas);
+        if(jogadorAtual.vivo && reu.vivo){
+            vivo = true;
+        }
+
+        return new RespostaTela(r1.oculta, r2.oculta, acertou, vivo, reu.vidasPerdidas);
     }
 
 
     public void proximoJogador(){
         //TODO fazer algoritmo de rand
+        //TODO achar um jeito melhor de todos morrerem
 
         if(jogadorAtual.nome.equals("A")){
             jogadorAtual = jb;
         } else if(jogadorAtual.nome.equals("B")){
             jogadorAtual = jc;
-        } else {
+        } else if(jogadorAtual.nome.equals("C")){
             jogadorAtual = ja;
+        } else {
+            jogadorAtual = jogadorMorto;
         }
 
         tela.trocarJogador(jogadorAtual);
