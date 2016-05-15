@@ -1,5 +1,7 @@
 package gigel.forcagijel;
 
+import android.util.Log;
+
 /**
  * Created by gabri on 01/05/2016.
  */

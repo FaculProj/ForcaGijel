@@ -11,13 +11,13 @@ public class Jogo {
     Jogador jb = new Jogador("B");
     Jogador jc = new Jogador("C");
     Jogador jogadorMorto = new Jogador("M");
+    Palavra p1;
+    Palavra p2;
 
     private Reu reu = new Reu();
     private boolean vezJogador;
     private Tela tela;
 
-    private Palavra p1;
-    private Palavra p2;
 
     //TODO variaveis utilizadas para simular o servidor
     Jogador jogadorAtual = ja;
@@ -70,9 +70,13 @@ public class Jogo {
         return new RespostaTela(r1.oculta, r2.oculta, acertou, vivo, reu.vidasPerdidas);
     }
 
-    public void pegarPalavra(){
-        p1 = new Palavra(tela.pegarPalavra());
-        p2 = new Palavra(tela.pegarPalavra());
+
+    public void setP1(Palavra pq){
+        p1 = pq;
+    }
+
+    public void setP2(Palavra pq){
+        p2 = pq;
     }
 
     public void proximoJogador(){

@@ -30,7 +30,7 @@ public class Tela extends AppCompatActivity {
     EditText tentativa2Tela;
 
     EditText palavraFornecida;
-    String givenWord = "";
+    Palavra givenWord;
 
     RelativeLayout background;
 
@@ -55,7 +55,7 @@ public class Tela extends AppCompatActivity {
         tentativa2Tela = (EditText) findViewById(R.id.tentativa2);
 
         jogo = new Jogo(this);
-        jogo.pegarPalavra();
+        pegarPalavras();
 
     }
 
@@ -116,7 +116,7 @@ public class Tela extends AppCompatActivity {
         nomeTela.setText(player.nome);
     }
 
-    public String pegarPalavra(){
+    public void pegarPalavras(){
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Insira uma palavra");
@@ -126,14 +126,27 @@ public class Tela extends AppCompatActivity {
         builder.setPositiveButton("Começar!", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                givenWord = palavraFornecida.getText().toString();
+                jogo.setP1(new Palavra(palavraFornecida.getText().toString()));
             }
         });
 
         AlertDialog ad = builder.create();
         ad.show();
 
-        return givenWord;
+        builder = new AlertDialog.Builder(this);
+        builder.setTitle("Insira uma palavra");
+        palavraFornecida = new EditText(this);
+        builder.setView(palavraFornecida);
+
+        builder.setPositiveButton("Começar!", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                jogo.setP2(new Palavra(palavraFornecida.getText().toString()));
+            }
+        });
+
+        ad = builder.create();
+        ad.show();
 
     }
 
