@@ -1,5 +1,7 @@
 package gigel.forcagijel;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -27,6 +29,9 @@ public class Tela extends AppCompatActivity {
     EditText tentativa1Tela;
     EditText tentativa2Tela;
 
+    EditText palavraFornecida;
+    String givenWord = "";
+
     RelativeLayout background;
 
 
@@ -50,10 +55,8 @@ public class Tela extends AppCompatActivity {
         tentativa2Tela = (EditText) findViewById(R.id.tentativa2);
 
         jogo = new Jogo(this);
-    }
+        jogo.pegarPalavra();
 
-    public void avisarJogador(){
-        //TODO avisar que é a vez do jogador
     }
 
     public void clickChute(View view){
@@ -81,7 +84,7 @@ public class Tela extends AppCompatActivity {
     private void atualizarTela(RespostaTela rt){
         p1Tela.setText(rt.oculta1);
         p2Tela.setText(rt.oculta2);
-        qtdVidasTela.setText(rt.vidas+" de 5");
+        qtdVidasTela.setText(rt.vidas + " de 5");
 
         if(rt.acertou){
             jogadaTela.setText("Acertou");
@@ -112,4 +115,31 @@ public class Tela extends AppCompatActivity {
 
         nomeTela.setText(player.nome);
     }
+
+    public String pegarPalavra(){
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Insira uma palavra");
+        palavraFornecida = new EditText(this);
+        builder.setView(palavraFornecida);
+
+        builder.setPositiveButton("Começar!", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                givenWord = palavraFornecida.getText().toString();
+            }
+        });
+
+        AlertDialog ad = builder.create();
+        ad.show();
+
+        return givenWord;
+
+    }
+
+
+
+
+
+
 }

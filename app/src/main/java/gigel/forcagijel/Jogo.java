@@ -25,10 +25,6 @@ public class Jogo {
 
     public Jogo(Tela telaVinculacao){
         tela = telaVinculacao;
-
-        p1 = new Palavra("abacate");
-        p2 = new Palavra("elefante");
-
         tela.trocarJogador(ja);
     }
 
@@ -74,6 +70,10 @@ public class Jogo {
         return new RespostaTela(r1.oculta, r2.oculta, acertou, vivo, reu.vidasPerdidas);
     }
 
+    public void pegarPalavra(){
+        p1 = new Palavra(tela.pegarPalavra());
+        p2 = new Palavra(tela.pegarPalavra());
+    }
 
     public void proximoJogador(){
         //TODO fazer algoritmo de rand

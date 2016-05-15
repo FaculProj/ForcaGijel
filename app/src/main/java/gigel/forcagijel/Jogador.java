@@ -19,9 +19,8 @@ public class Jogador {
         vivo = false;
     }
 
-    public Palavra CriarPalavra(){
-        //TODO Pedir palavra user
-        Palavra x = new Palavra("HAHA");
+    public Palavra CriarPalavra(String pf){
+        Palavra x = new Palavra(pf);
         return x;
     }
 }
