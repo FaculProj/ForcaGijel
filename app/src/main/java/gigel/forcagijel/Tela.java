@@ -2,7 +2,6 @@ package gigel.forcagijel;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -10,9 +9,6 @@ import android.widget.TextView;
 public class Tela extends AppCompatActivity {
 
     private Jogo jogo = new Jogo(this);
-
-    private Palavra p1;
-    private Palavra p2;
 
     TextView p1Tela;
     TextView p2Tela;
@@ -26,8 +22,6 @@ public class Tela extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.jogo_layout);
-        p1 = new Palavra("abacate");
-        p2 = new Palavra("elefante");
 
         p1Tela = (TextView) findViewById(R.id.palavra1);
         p2Tela = (TextView) findViewById(R.id.palavra2);
@@ -46,11 +40,10 @@ public class Tela extends AppCompatActivity {
         String chute = chuteTela.getText().toString();
         chuteTela.setText("");
         if(! chute.equals("")){
-            Resposta r1 = p1.verificarChute(chute);
-            Resposta r2 = p2.verificarChute(chute);
+            RespostaTela r = jogo.chutar(chute);
 
-            p1Tela.setText(r1.oculta);
-            p2Tela.setText(r2.oculta);
+            p1Tela.setText(r.oculta1);
+            p2Tela.setText(r.oculta2);
         }
     }
 
@@ -61,11 +54,11 @@ public class Tela extends AppCompatActivity {
         tentativa1Tela.setText("");
         tentativa2Tela.setText("");
         if( (! tentativa1.equals("")) && (! tentativa2.equals("")) ){
-            Resposta r1 = p1.verificarTentativa(tentativa1);
-            Resposta r2 = p2.verificarTentativa(tentativa2);
+            /*RespostaPalavra r1 = p1.verificarTentativa(tentativa1);
+            RespostaPalavra r2 = p2.verificarTentativa(tentativa2);
 
             p1Tela.setText(r1.oculta);
-            p2Tela.setText(r2.oculta);
+            p2Tela.setText(r2.oculta);*/
         }
     }
 }

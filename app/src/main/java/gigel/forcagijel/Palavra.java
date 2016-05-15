@@ -1,7 +1,5 @@
 package gigel.forcagijel;
 
-import android.util.Log;
-
 /**
  * Created by gabri on 01/05/2016.
  */
@@ -22,7 +20,7 @@ public class Palavra {
         palavraDisplay = p.trim();
     }
 
-    public Resposta verificarChute(String chute){
+    public RespostaPalavra verificarChute(String chute){
         boolean acertou = false;
         boolean palavraCompleta = true;
         String p = palavraDisplay;
@@ -48,18 +46,18 @@ public class Palavra {
             palavraDisplay = palavra;
         }
 
-        Resposta r = new Resposta(palavraDisplay, acertou);
+        RespostaPalavra r = new RespostaPalavra(palavraDisplay, acertou);
 
         return r;
     }
 
-    public Resposta verificarTentativa(String tentativa){
-        Resposta r;
+    public RespostaPalavra verificarTentativa(String tentativa){
+        RespostaPalavra r;
 
         if(tentativa.toLowerCase().trim().equals(palavra.toLowerCase())){
-            r = new Resposta(palavra, true);
+            r = new RespostaPalavra(palavra, true);
         } else {
-            r = new Resposta("PERDEU!", false);
+            r = new RespostaPalavra("PERDEU!", false);
         }
 
         return r;
