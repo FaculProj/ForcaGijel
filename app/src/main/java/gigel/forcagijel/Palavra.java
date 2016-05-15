@@ -9,10 +9,15 @@ public class Palavra {
     private String palavra;
 
     //exemplo: A_A_A_E
-    private String palavraDisplay;
+    String palavraDisplay;
 
     public Palavra(String novaPalavra){
         palavra = novaPalavra;
+        String p = "";
+        for(int i = 0; i < novaPalavra.length(); i++){
+            p += " _".trim();
+        }
+        palavraDisplay = p.trim();
     }
 
     public String verificarChute(String chute){
@@ -23,14 +28,5 @@ public class Palavra {
     public String verificarTentativa(String tentativa){
         //TODO fazer code: Veriricar palavra e atualizar palavra display
         return palavraDisplay;
-    }
-
-    public void trocarPalavra(String novaPalavra){
-        palavra = novaPalavra;
-        String p = "";
-        for(int i = 0; i < novaPalavra.length(); i++){
-            p += " _".trim();
-        }
-        palavraDisplay = p.trim();
     }
 }
