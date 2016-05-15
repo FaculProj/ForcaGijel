@@ -12,6 +12,10 @@ public class Tela extends AppCompatActivity {
 
     TextView p1Tela;
     TextView p2Tela;
+    TextView qtdVidasTela;
+    TextView jogadorTela;
+    TextView nomeTela;
+    TextView jogadaTela;
 
     EditText chuteTela;
     EditText tentativa1Tela;
@@ -25,6 +29,10 @@ public class Tela extends AppCompatActivity {
 
         p1Tela = (TextView) findViewById(R.id.palavra1);
         p2Tela = (TextView) findViewById(R.id.palavra2);
+        qtdVidasTela = (TextView) findViewById(R.id.qtdVidas);
+        jogadorTela = (TextView) findViewById(R.id.jogador);
+        nomeTela = (TextView) findViewById(R.id.nome);
+        jogadaTela = (TextView) findViewById(R.id.jogada);
 
         chuteTela = (EditText) findViewById(R.id.chute);
         tentativa1Tela = (EditText) findViewById(R.id.tentativa1);
@@ -40,9 +48,7 @@ public class Tela extends AppCompatActivity {
         chuteTela.setText("");
         if(! chute.equals("")){
             RespostaTela r = jogo.chutar(chute);
-
-            p1Tela.setText(r.oculta1);
-            p2Tela.setText(r.oculta2);
+            atualizarTela(r);
         }
     }
 
@@ -52,11 +58,26 @@ public class Tela extends AppCompatActivity {
         tentativa1Tela.setText("");
         tentativa2Tela.setText("");
         if( (! tentativa1.equals("")) && (! tentativa2.equals("")) ){
-
             RespostaTela r = jogo.tentar(tentativa1, tentativa2);
 
-            p1Tela.setText(r.oculta1);
-            p2Tela.setText(r.oculta2);
+        }
+    }
+
+    private void atualizarTela(RespostaTela rt){
+        p1Tela.setText(rt.oculta1);
+        p2Tela.setText(rt.oculta2);
+        qtdVidasTela.setText(rt.vidas+" de 5");
+
+        if(rt.acertou){
+            jogadaTela.setText("Acertou");
+        } else {
+            jogadaTela.setText("Errou");
+        }
+
+        if(rt.vivo){
+            jogadorTela.setText("Vivo");
+        } else {
+            jogadorTela.setText("Morto");
         }
     }
 }

@@ -5,6 +5,7 @@ package gigel.forcagijel;
  */
 public class Jogador {
 
+    String nome;
     private String status;
     private Jogo jogo;
 

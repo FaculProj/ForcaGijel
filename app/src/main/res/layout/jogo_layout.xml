@@ -33,18 +33,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Vidas:"
+        android:text="Vidas Usadas:"
         android:id="@+id/textView11"
         android:layout_below="@+id/textView2"
-        android:layout_toLeftOf="@+id/textView4"
-        android:layout_toStartOf="@+id/textView4" />
+        android:layout_toLeftOf="@+id/jogada"
+        android:layout_toStartOf="@+id/jogada" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Vivo"
-        android:id="@+id/textView3"
+        android:id="@+id/jogador"
         android:layout_alignParentTop="true"
         android:layout_toRightOf="@+id/textView"
         android:layout_toEndOf="@+id/textView" />
@@ -54,8 +54,8 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Acertou"
-        android:id="@+id/textView4"
-        android:layout_below="@+id/textView3"
+        android:id="@+id/jogada"
+        android:layout_below="@+id/jogador"
         android:layout_toRightOf="@+id/textView"
         android:layout_toEndOf="@+id/textView" />
 
@@ -64,8 +64,8 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="1 de 5"
-        android:id="@+id/textView12"
-        android:layout_below="@+id/textView4"
+        android:id="@+id/qtdVidas"
+        android:layout_below="@+id/jogada"
         android:layout_toRightOf="@+id/textView2"
         android:layout_toEndOf="@+id/textView2" />
 
@@ -96,7 +96,7 @@
         android:text="Palavra 1"
         android:id="@+id/textView7"
         android:layout_marginTop="30dp"
-        android:layout_below="@+id/textView4"
+        android:layout_below="@+id/jogada"
         android:layout_centerHorizontal="true" />
 
     <TextView
@@ -126,7 +126,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="A"
-        android:id="@+id/textView10"
+        android:id="@+id/nome"
         android:layout_below="@+id/textView9"
         android:layout_alignRight="@+id/palavra1"
         android:layout_alignEnd="@+id/palavra1" />

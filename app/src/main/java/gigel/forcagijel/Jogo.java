@@ -5,9 +5,11 @@ package gigel.forcagijel;
  */
 public class Jogo {
 
-    Jogador jogador;
+    Jogador jogador = new Jogador(this);
+    private Reu reu = new Reu();
     private boolean vezJogador;
     private Tela tela;
+
 
     private Palavra p1;
     private Palavra p2;
@@ -20,10 +22,6 @@ public class Jogo {
         p2 = new Palavra("elefante");
     }
 
-    public void setJogador(Jogador player){
-        jogador = new Jogador(this);
-    }
-
     public RespostaTela chutar(String chute){
         RespostaPalavra r1 = p1.verificarChute(chute);
         RespostaPalavra r2 = p2.verificarChute(chute);
@@ -32,11 +30,11 @@ public class Jogo {
 
         if(r1.acertou || r2.acertou){
             acertou = true;
+        } else{
+            reu.perderVida();
         }
 
-        boolean vivo = true;
-
-        return new RespostaTela(r1.oculta, r2.oculta, acertou, vivo);
+        return new RespostaTela(r1.oculta, r2.oculta, acertou, reu.vivo, reu.vidasPerdidas);
     }
 
 
@@ -49,11 +47,11 @@ public class Jogo {
 
         if(r1.acertou || r2.acertou){
             acertou = true;
+        } else{
+            reu.perderVida();
         }
 
-        boolean vivo = true;
-
-        return new RespostaTela(r1.oculta, r2.oculta, acertou, vivo);
+        return new RespostaTela(r1.oculta, r2.oculta, acertou, reu.vivo, reu.vidasPerdidas);
     }
 
 
