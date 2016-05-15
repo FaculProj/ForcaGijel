@@ -7,11 +7,10 @@ public class Jogador {
 
     String nome;
     private String status;
-    private Jogo jogo;
 
-    public Jogador(Jogo nj){
-        status = "";
-        jogo = nj;
+    public Jogador(String name){
+        status = "vivo";
+        nome = name;
     }
 
     public Palavra CriarPalavra(){

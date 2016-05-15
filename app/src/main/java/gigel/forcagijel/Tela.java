@@ -2,13 +2,18 @@ package gigel.forcagijel;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 public class Tela extends AppCompatActivity {
 
-    private Jogo jogo = new Jogo(this);
+    private Jogo jogo;
+
+    //TODO mover para Jogo e transformar em uma lista, para verificar se a letra já foi jogada
+    String chutes = "";
 
     TextView p1Tela;
     TextView p2Tela;
@@ -16,10 +21,13 @@ public class Tela extends AppCompatActivity {
     TextView jogadorTela;
     TextView nomeTela;
     TextView jogadaTela;
+    TextView chutesTela;
 
     EditText chuteTela;
     EditText tentativa1Tela;
     EditText tentativa2Tela;
+
+    RelativeLayout background;
 
 
     @Override
@@ -27,16 +35,21 @@ public class Tela extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.jogo_layout);
 
+        background = (RelativeLayout)findViewById(R.id.background);
+
         p1Tela = (TextView) findViewById(R.id.palavra1);
         p2Tela = (TextView) findViewById(R.id.palavra2);
         qtdVidasTela = (TextView) findViewById(R.id.qtdVidas);
         jogadorTela = (TextView) findViewById(R.id.jogador);
         nomeTela = (TextView) findViewById(R.id.nome);
         jogadaTela = (TextView) findViewById(R.id.jogada);
+        chutesTela = (TextView) findViewById(R.id.chutes);
 
         chuteTela = (EditText) findViewById(R.id.chute);
         tentativa1Tela = (EditText) findViewById(R.id.tentativa1);
         tentativa2Tela = (EditText) findViewById(R.id.tentativa2);
+
+        jogo = new Jogo(this);
     }
 
     public void avisarJogador(){
@@ -47,6 +60,8 @@ public class Tela extends AppCompatActivity {
         String chute = chuteTela.getText().toString();
         chuteTela.setText("");
         if(! chute.equals("")){
+            chutes = (chutes +" "+ chute).trim();
+            chutesTela.setText(chutes);
             RespostaTela r = jogo.chutar(chute);
             atualizarTela(r);
         }
@@ -79,5 +94,21 @@ public class Tela extends AppCompatActivity {
         } else {
             jogadorTela.setText("Morto");
         }
+
+        jogo.proximoJogador();
+    }
+
+    public void trocarJogador(Jogador player){
+        Log.d("LOOOG", player.nome);
+
+        if(player.nome.equals("A")){
+            background.setBackgroundColor(getResources().getColor(R.color.ja));
+        } else if(player.nome.equals("B")){
+            background.setBackgroundColor(getResources().getColor(R.color.jb));
+        } else {
+            background.setBackgroundColor(getResources().getColor(R.color.jc));
+        }
+
+        nomeTela.setText(player.nome);
     }
 }
