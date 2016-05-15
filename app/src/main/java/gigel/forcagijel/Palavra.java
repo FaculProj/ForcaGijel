@@ -14,7 +14,7 @@ public class Palavra {
     String palavraDisplay;
 
     public Palavra(String novaPalavra){
-        palavra = novaPalavra;
+        palavra = novaPalavra.trim();
         String p = "";
         for(int i = 0; i < novaPalavra.length(); i++){
             p += " _";
@@ -23,27 +23,45 @@ public class Palavra {
     }
 
     public Resposta verificarChute(String chute){
-        //TODO fazer code: Veriricar palavra e atualizar palavra display
-
         boolean acertou = false;
+        boolean palavraCompleta = true;
         String p = palavraDisplay;
 
-        for(int i = 0; i < palavra.length(); i++){
-            if(palavra.toLowerCase().charAt(i) == chute.toLowerCase().charAt(0)){
-                p = (p.substring(0, (i*2)) + chute + p.substring((i*2)+1, p.length()));
+        if(! chute.equals("")) {
+            for (int i = 0; i < palavra.length(); i++) {
+                if (palavra.toLowerCase().charAt(i) == chute.toLowerCase().charAt(0)) {
+                    acertou = true;
+                    p = (p.substring(0, (i * 2)) + chute + p.substring((i * 2) + 1, p.length()));
+                }
             }
         }
+
         palavraDisplay = p;
 
-        Resposta r = new Resposta(palavraDisplay, acertou);
+        for(int i = 0; i < palavraDisplay.length(); i++){
+            if(palavraDisplay.charAt(i) == "_".charAt(0)){
+                palavraCompleta = false;
+            }
+        }
 
-        Log.d("LOG", r.oculta);
+        if(palavraCompleta){
+            palavraDisplay = palavra;
+        }
+
+        Resposta r = new Resposta(palavraDisplay, acertou);
 
         return r;
     }
 
-    public String verificarTentativa(String tentativa){
-        //TODO fazer code: Veriricar palavra e atualizar palavra display
-        return palavra;
+    public Resposta verificarTentativa(String tentativa){
+        Resposta r;
+
+        if(tentativa.toLowerCase().trim().equals(palavra.toLowerCase())){
+            r = new Resposta(palavra, true);
+        } else {
+            r = new Resposta("PERDEU!", false);
+        }
+
+        return r;
     }
 }

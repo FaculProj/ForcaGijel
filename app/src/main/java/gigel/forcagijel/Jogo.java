@@ -23,7 +23,6 @@ public class Jogo {
 
 
     public Jogo(Tela telaVinculacao){
-        api = new API();
         tela = telaVinculacao;
     }
 

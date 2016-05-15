@@ -73,7 +73,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="A _ A _ A _ E"
+        android:text="_ _ _ _ _ _ _"
         android:id="@+id/palavra1"
         android:textSize="100px"
         android:layout_below="@+id/textView7"
@@ -83,7 +83,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="E _ E _ A _ _ E"
+        android:text="_ _ _ _ _ _ _ _"
         android:id="@+id/palavra2"
         android:textSize="100px"
         android:layout_below="@+id/textView8"
@@ -149,7 +149,7 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/editText2"
+        android:id="@+id/tentativa1"
         android:layout_marginTop="36dp"
         android:layout_below="@+id/chute"
         android:layout_alignParentLeft="true"
@@ -172,8 +172,8 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/editText3"
-        android:layout_below="@+id/editText2"
+        android:id="@+id/tentativa2"
+        android:layout_below="@+id/tentativa1"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_toLeftOf="@+id/textView9"
@@ -185,8 +185,9 @@
         android:layout_height="wrap_content"
         android:text="Tentativa"
         android:id="@+id/button2"
-        android:layout_alignBottom="@+id/editText3"
+        android:layout_alignBottom="@+id/tentativa2"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:onClick="clickTentativa" />
 
 </RelativeLayout>
