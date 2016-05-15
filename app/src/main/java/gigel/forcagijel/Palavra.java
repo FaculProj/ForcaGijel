@@ -29,7 +29,7 @@ public class Palavra {
         String p = palavraDisplay;
 
         for(int i = 0; i < palavra.length(); i++){
-            if(palavra.charAt(i) == chute.charAt(0)){
+            if(palavra.toLowerCase().charAt(i) == chute.toLowerCase().charAt(0)){
                 p = (p.substring(0, (i*2)) + chute + p.substring((i*2)+1, p.length()));
             }
         }

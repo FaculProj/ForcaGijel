@@ -134,7 +134,7 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/editText"
+        android:id="@+id/chute"
         android:layout_below="@+id/palavra2"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
@@ -143,6 +143,7 @@
         android:layout_toStartOf="@+id/button"
         android:layout_alignRight="@+id/textView8"
         android:layout_alignEnd="@+id/textView8"
+        android:maxLength="1"
         android:hint="Digite uma letra" />
 
     <EditText
@@ -150,7 +151,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/editText2"
         android:layout_marginTop="36dp"
-        android:layout_below="@+id/editText"
+        android:layout_below="@+id/chute"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignRight="@+id/textView8"
@@ -163,7 +164,7 @@
         android:layout_height="wrap_content"
         android:text="Chute"
         android:id="@+id/button"
-        android:layout_alignBottom="@+id/editText"
+        android:layout_alignBottom="@+id/chute"
         android:layout_alignLeft="@+id/textView9"
         android:layout_alignStart="@+id/textView9"
         android:onClick="clickChute" />

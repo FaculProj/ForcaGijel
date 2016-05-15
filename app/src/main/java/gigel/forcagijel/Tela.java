@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 public class Tela extends AppCompatActivity {
@@ -16,6 +17,8 @@ public class Tela extends AppCompatActivity {
     TextView p1Tela;
     TextView p2Tela;
 
+    EditText chuteTela;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +29,8 @@ public class Tela extends AppCompatActivity {
 
         p1Tela = (TextView) findViewById(R.id.palavra1);
         p2Tela = (TextView) findViewById(R.id.palavra2);
+
+        chuteTela = (EditText) findViewById(R.id.chute);
     }
 
     public void avisarJogador(){
@@ -34,8 +39,10 @@ public class Tela extends AppCompatActivity {
 
     public void clickChute(View view){
         //TODO pegar texto tela
-        Resposta r1 = p1.verificarChute("t");
-        Resposta r2 = p2.verificarChute("t");
+        String chute = chuteTela.getText().toString();
+        chuteTela.setText("");
+        Resposta r1 = p1.verificarChute(chute);
+        Resposta r2 = p2.verificarChute(chute);
 
         p1Tela.setText(r1.oculta);
         p2Tela.setText(r2.oculta);
