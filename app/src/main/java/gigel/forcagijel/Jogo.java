@@ -16,9 +16,7 @@ public class Jogo {
     Jogador jogador;
     private Palavra primeiraPalavra;
     private Palavra segundaPalavra;
-    private Reu reu;
     private boolean vezJogador;
-    API api;
     private Tela tela;
 
 
@@ -32,7 +30,7 @@ public class Jogo {
     }
 
     public void perguntarVez(){
-        if(api.checarVez() == false){
+        if(true == false){
             //TODO dormir thread 1seg
             perguntarVez();
         }
