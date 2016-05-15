@@ -40,35 +40,20 @@ public class Jogo {
     }
 
 
+    public RespostaTela tentar(String tentativa1, String tentativa2){
 
+        RespostaPalavra r1 = p1.verificarTentativa(tentativa1);
+        RespostaPalavra r2 = p2.verificarTentativa(tentativa2);
 
+        boolean acertou = false;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    public void perguntarVez(){
-        if(true == false){
-            //TODO dormir thread 1seg
-            perguntarVez();
+        if(r1.acertou || r2.acertou){
+            acertou = true;
         }
-        else {
-            tela.avisarJogador();
-        }
+
+        boolean vivo = true;
+
+        return new RespostaTela(r1.oculta, r2.oculta, acertou, vivo);
     }
 
 

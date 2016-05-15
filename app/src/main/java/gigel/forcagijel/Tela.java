@@ -36,7 +36,6 @@ public class Tela extends AppCompatActivity {
     }
 
     public void clickChute(View view){
-        //TODO pegar texto tela
         String chute = chuteTela.getText().toString();
         chuteTela.setText("");
         if(! chute.equals("")){
@@ -48,17 +47,16 @@ public class Tela extends AppCompatActivity {
     }
 
     public void clickTentativa(View view){
-        //TODO pegar texto tela
         String tentativa1 = tentativa1Tela.getText().toString();
         String tentativa2 = tentativa2Tela.getText().toString();
         tentativa1Tela.setText("");
         tentativa2Tela.setText("");
         if( (! tentativa1.equals("")) && (! tentativa2.equals("")) ){
-            /*RespostaPalavra r1 = p1.verificarTentativa(tentativa1);
-            RespostaPalavra r2 = p2.verificarTentativa(tentativa2);
 
-            p1Tela.setText(r1.oculta);
-            p2Tela.setText(r2.oculta);*/
+            RespostaTela r = jogo.tentar(tentativa1, tentativa2);
+
+            p1Tela.setText(r.oculta1);
+            p2Tela.setText(r.oculta2);
         }
     }
 }
