@@ -22,9 +22,10 @@ public class Palavra {
         palavraDisplay = p.trim();
     }
 
-    public String verificarChute(String chute){
+    public Resposta verificarChute(String chute){
         //TODO fazer code: Veriricar palavra e atualizar palavra display
 
+        boolean acertou = false;
         String p = palavraDisplay;
 
         for(int i = 0; i < palavra.length(); i++){
@@ -34,7 +35,11 @@ public class Palavra {
         }
         palavraDisplay = p;
 
-        return palavraDisplay;
+        Resposta r = new Resposta(palavraDisplay, acertou);
+
+        Log.d("LOG", r.oculta);
+
+        return r;
     }
 
     public String verificarTentativa(String tentativa){
