@@ -1,6 +1,7 @@
 package gigel.forcagijel;
 
 import android.util.Log;
+import android.widget.Toast;
 
 /**
  * Created by gabri on 01/05/2016.
@@ -13,6 +14,8 @@ public class Palavra {
     //exemplo: A_A_A_E
     String palavraDisplay;
 
+    boolean palavraCompleta = true;
+
     public Palavra(String novaPalavra){
         palavra = novaPalavra.trim();
         String p = "";
@@ -24,7 +27,6 @@ public class Palavra {
 
     public RespostaPalavra verificarChute(String chute){
         boolean acertou = false;
-        boolean palavraCompleta = true;
         String p = palavraDisplay;
 
         if(! chute.equals("")) {
@@ -38,6 +40,7 @@ public class Palavra {
 
         palavraDisplay = p;
 
+        palavraCompleta = true;
         for(int i = 0; i < palavraDisplay.length(); i++){
             if(palavraDisplay.charAt(i) == "_".charAt(0)){
                 palavraCompleta = false;

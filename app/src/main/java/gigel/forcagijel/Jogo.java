@@ -45,6 +45,10 @@ public class Jogo {
             vivo = true;
         }
 
+        if(p1.palavraCompleta && p2.palavraCompleta){
+            tela.mostrarGanhou();
+        }
+
         return new RespostaTela(r1.oculta, r2.oculta, acertou, vivo, reu.vidasPerdidas);
     }
 
@@ -65,6 +69,10 @@ public class Jogo {
 
         if(jogadorAtual.vivo && reu.vivo){
             vivo = true;
+        }
+
+        if(! acertou){
+            tela.mostrarMorreu();
         }
 
         return new RespostaTela(r1.oculta, r2.oculta, acertou, vivo, reu.vidasPerdidas);

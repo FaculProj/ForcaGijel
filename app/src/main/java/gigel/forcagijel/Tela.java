@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class Tela extends AppCompatActivity {
 
@@ -29,7 +30,8 @@ public class Tela extends AppCompatActivity {
     EditText tentativa1Tela;
     EditText tentativa2Tela;
 
-    EditText palavraFornecida;
+    EditText palavraFornecida1;
+    EditText palavraFornecida2;
     Palavra givenWord;
 
     RelativeLayout background;
@@ -96,6 +98,7 @@ public class Tela extends AppCompatActivity {
             jogadorTela.setText("Vivo");
         } else {
             jogadorTela.setText("Morto");
+            mostrarMorreu();
         }
 
         jogo.proximoJogador();
@@ -116,37 +119,47 @@ public class Tela extends AppCompatActivity {
         nomeTela.setText(player.nome);
     }
 
+    public void mostrarGanhou(){
+        Toast.makeText(getApplicationContext(), "Jogador "+jogo.jogadorAtual.nome+" Ganhou!!", Toast.LENGTH_SHORT).show();
+    }
+
+    public void mostrarMorreu(){
+        Toast.makeText(getApplicationContext(), "Você perdeu!", Toast.LENGTH_SHORT).show();
+    }
+
     public void pegarPalavras(){
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Insira uma palavra");
-        palavraFornecida = new EditText(this);
-        builder.setView(palavraFornecida);
+        palavraFornecida1 = new EditText(this);
+        builder.setView(palavraFornecida1);
 
         builder.setPositiveButton("Começar!", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                jogo.setP1(new Palavra(palavraFornecida.getText().toString()));
+                jogo.setP1(new Palavra(palavraFornecida1.getText().toString()));
             }
         });
 
         AlertDialog ad = builder.create();
         ad.show();
+        jogo.proximoJogador();
 
         builder = new AlertDialog.Builder(this);
         builder.setTitle("Insira uma palavra");
-        palavraFornecida = new EditText(this);
-        builder.setView(palavraFornecida);
+        palavraFornecida2 = new EditText(this);
+        builder.setView(palavraFornecida2);
 
         builder.setPositiveButton("Começar!", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                jogo.setP2(new Palavra(palavraFornecida.getText().toString()));
+                jogo.setP2(new Palavra(palavraFornecida2.getText().toString()));
             }
         });
 
         ad = builder.create();
         ad.show();
+        jogo.proximoJogador();
 
     }
 

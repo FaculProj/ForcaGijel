@@ -13,6 +13,7 @@ public class Jogador {
     public Jogador(String name){
         status = "vivo";
         nome = name;
+        vivo = true;
     }
 
     public void morrer(){
