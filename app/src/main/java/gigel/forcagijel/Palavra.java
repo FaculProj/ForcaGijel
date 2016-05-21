@@ -60,9 +60,11 @@ public class Palavra {
         RespostaPalavra r;
 
         if(tentativa.toLowerCase().trim().equals(palavra.toLowerCase())){
+            palavraDisplay = palavra;
+            palavraCompleta = true;
             r = new RespostaPalavra(palavra, true);
         } else {
-            r = new RespostaPalavra("PERDEU!", false);
+            r = new RespostaPalavra(palavraDisplay, false);
         }
 
         return r;

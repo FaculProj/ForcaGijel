@@ -61,7 +61,7 @@ public class Jogo {
             }
 
             if (p1.palavraCompleta && p2.palavraCompleta) {
-                tela.mostrarGanhou();
+                tela.mostrarMensagem("Jogador "+jogadorAtual.nome+" Ganhou!!");
             }
 
             return new RespostaTela(r1.oculta, r2.oculta, acertou, vivo, reu.vidasPerdidas);
@@ -88,9 +88,9 @@ public class Jogo {
         }
 
         if(! acertou){
-            tela.mostrarMorreu();
+            tela.mostrarMensagem("Jogador " + jogadorAtual.nome + " MORREU!!");
         } else if(p1.palavraCompleta && p2.palavraCompleta){
-            tela.mostrarGanhou();
+            tela.mostrarMensagem("Jogador " + jogadorAtual.nome + " GANHOU!!");
         }
 
         return new RespostaTela(r1.oculta, r2.oculta, acertou, vivo, reu.vidasPerdidas);
@@ -115,6 +115,10 @@ public class Jogo {
             jogadorAtual = ja;
         } else {
             jogadorAtual = jogadorMorto;
+        }
+
+        if(! jogadorAtual.vivo) {
+            proximoJogador();
         }
 
         tela.trocarJogador(jogadorAtual);

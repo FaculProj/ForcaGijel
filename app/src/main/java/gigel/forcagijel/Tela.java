@@ -63,21 +63,30 @@ public class Tela extends AppCompatActivity {
     }
 
     public void clickChute(View view){
-        String chute = chuteTela.getText().toString();
-        chuteTela.setText("");
-        RespostaTela r = jogo.chutar(chute);
-        atualizarTela(r);
-        chutesTela.setText(Arrays.toString(jogo.chutes.toArray()));
+        if(jogo.jogadorAtual.vivo) {
+            String chute = chuteTela.getText().toString();
+            chuteTela.setText("");
+            RespostaTela r = jogo.chutar(chute);
+            atualizarTela(r);
+            chutesTela.setText(Arrays.toString(jogo.chutes.toArray()));
+        } else {
+            mostrarMensagem("Você Já está morto");
+        }
     }
 
     public void clickTentativa(View view){
-        String tentativa1 = tentativa1Tela.getText().toString();
-        String tentativa2 = tentativa2Tela.getText().toString();
-        tentativa1Tela.setText("");
-        tentativa2Tela.setText("");
-        if( (! tentativa1.equals("")) && (! tentativa2.equals("")) ){
-            RespostaTela r = jogo.tentar(tentativa1, tentativa2);
-            atualizarTela(r);
+
+        if(jogo.jogadorAtual.vivo) {
+            String tentativa1 = tentativa1Tela.getText().toString();
+            String tentativa2 = tentativa2Tela.getText().toString();
+            tentativa1Tela.setText("");
+            tentativa2Tela.setText("");
+            if ((!tentativa1.equals("")) && (!tentativa2.equals(""))) {
+                RespostaTela r = jogo.tentar(tentativa1, tentativa2);
+                atualizarTela(r);
+            }
+        } else {
+            mostrarMensagem("Você Já está morto");
         }
     }
 
@@ -96,7 +105,6 @@ public class Tela extends AppCompatActivity {
             jogadorTela.setText("Vivo");
         } else {
             jogadorTela.setText("Morto");
-            mostrarMorreu();
         }
 
         jogo.proximoJogador();
@@ -112,19 +120,23 @@ public class Tela extends AppCompatActivity {
             background.setBackgroundColor(getResources().getColor(R.color.jc));
         } else{
             background.setBackgroundColor(getResources().getColor(R.color.jm));
+            mostrarMensagem("Não existem mais players vivos!");
         }
 
         nomeTela.setText(player.nome);
     }
 
-    public void mostrarGanhou(){
-        Toast.makeText(getApplicationContext(), "Jogador "+jogo.jogadorAtual.nome+" Ganhou!!", Toast.LENGTH_SHORT).show();
+    public void mostrarMensagem(String mensagem){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(mensagem);
+        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+            }
+        });
+        AlertDialog ad = builder.create();
+        ad.show();
     }
-
-    public void mostrarMorreu(){
-        Toast.makeText(getApplicationContext(), "Você perdeu!", Toast.LENGTH_SHORT).show();
-    }
-
     public void pegarPalavras(){
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -135,7 +147,7 @@ public class Tela extends AppCompatActivity {
         builder.setPositiveButton("Começar!", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                jogo.setP1(new Palavra(palavraFornecida1.getText().toString()));
+                jogo.setP1(new Palavra(palavraFornecida1.getText().toString().trim()));
             }
         });
 
@@ -151,7 +163,7 @@ public class Tela extends AppCompatActivity {
         builder2.setPositiveButton("Começar!", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                jogo.setP2(new Palavra(palavraFornecida2.getText().toString()));
+                jogo.setP2(new Palavra(palavraFornecida2.getText().toString().trim()));
             }
         });
 

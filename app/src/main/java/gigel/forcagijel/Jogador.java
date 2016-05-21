@@ -20,8 +20,4 @@ public class Jogador {
         vivo = false;
     }
 
-    public Palavra CriarPalavra(String pf){
-        Palavra x = new Palavra(pf);
-        return x;
-    }
 }
