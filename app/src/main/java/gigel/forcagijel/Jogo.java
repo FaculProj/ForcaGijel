@@ -42,6 +42,8 @@ public class Jogo {
             reu.perderVida();
             if (jogadorAtual.vivo && reu.vivo) {
                 vivo = true;
+            } else{
+                tela.mostrarMensagem("Jogador " + jogadorAtual.nome + " MORREU!!");
             }
             return new RespostaTela(p1.palavraDisplay, p2.palavraDisplay, false, vivo, reu.vidasPerdidas);
         } else {
@@ -58,6 +60,8 @@ public class Jogo {
 
             if (jogadorAtual.vivo && reu.vivo) {
                 vivo = true;
+            } else{
+                tela.mostrarMensagem("Jogador " + jogadorAtual.nome + " MORREU!!");
             }
 
             if (p1.palavraCompleta && p2.palavraCompleta) {
