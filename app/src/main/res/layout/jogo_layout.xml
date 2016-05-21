@@ -74,7 +74,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="_ _ _ _ _ _ _"
         android:id="@+id/palavra1"
         android:textSize="100px"
         android:layout_below="@+id/textView7"
@@ -84,7 +83,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="_ _ _ _ _ _ _ _"
         android:id="@+id/palavra2"
         android:textSize="100px"
         android:layout_below="@+id/textView8"
@@ -128,9 +126,9 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="A"
         android:id="@+id/nome"
-        android:layout_below="@+id/textView9"
-        android:layout_alignRight="@+id/palavra1"
-        android:layout_alignEnd="@+id/palavra1" />
+        android:layout_alignBaseline="@+id/jogada"
+        android:layout_alignBottom="@+id/jogada"
+        android:layout_alignEnd="@+id/textView9" />
 
     <EditText
         android:layout_width="wrap_content"

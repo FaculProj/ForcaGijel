@@ -2,6 +2,8 @@ package gigel.forcagijel;
 
 import android.util.Log;
 
+import java.util.ArrayList;
+
 /**
  * Created by gabri on 01/05/2016.
  */
@@ -14,10 +16,12 @@ public class Jogo {
     Palavra p1;
     Palavra p2;
 
-    private Reu reu = new Reu();
-    private boolean vezJogador;
-    private Tela tela;
+    ArrayList<String> chutes = new ArrayList<String>();
 
+
+
+    private Reu reu = new Reu();
+    private Tela tela;
 
     //TODO variaveis utilizadas para simular o servidor
     Jogador jogadorAtual = ja;
@@ -29,27 +33,39 @@ public class Jogo {
     }
 
     public RespostaTela chutar(String chute){
-        RespostaPalavra r1 = p1.verificarChute(chute);
-        RespostaPalavra r2 = p2.verificarChute(chute);
 
         boolean acertou = false;
         boolean vivo = false;
 
-        if(r1.acertou || r2.acertou){
-            acertou = true;
-        } else{
+
+        if(chutes.contains(chute)){
             reu.perderVida();
-        }
+            if (jogadorAtual.vivo && reu.vivo) {
+                vivo = true;
+            }
+            return new RespostaTela(p1.palavraDisplay, p2.palavraDisplay, false, vivo, reu.vidasPerdidas);
+        } else {
 
-        if(jogadorAtual.vivo && reu.vivo){
-            vivo = true;
-        }
+            chutes.add(chute);
+            RespostaPalavra r1 = p1.verificarChute(chute);
+            RespostaPalavra r2 = p2.verificarChute(chute);
 
-        if(p1.palavraCompleta && p2.palavraCompleta){
-            tela.mostrarGanhou();
-        }
+            if (r1.acertou || r2.acertou) {
+                acertou = true;
+            } else {
+                reu.perderVida();
+            }
 
-        return new RespostaTela(r1.oculta, r2.oculta, acertou, vivo, reu.vidasPerdidas);
+            if (jogadorAtual.vivo && reu.vivo) {
+                vivo = true;
+            }
+
+            if (p1.palavraCompleta && p2.palavraCompleta) {
+                tela.mostrarGanhou();
+            }
+
+            return new RespostaTela(r1.oculta, r2.oculta, acertou, vivo, reu.vidasPerdidas);
+        }
     }
 
 
@@ -73,15 +89,15 @@ public class Jogo {
 
         if(! acertou){
             tela.mostrarMorreu();
+        } else if(p1.palavraCompleta && p2.palavraCompleta){
+            tela.mostrarGanhou();
         }
 
         return new RespostaTela(r1.oculta, r2.oculta, acertou, vivo, reu.vidasPerdidas);
     }
 
 
-    public void setP1(Palavra pq){
-        p1 = pq;
-    }
+    public void setP1(Palavra pq){ p1 = pq; }
 
     public void setP2(Palavra pq){
         p2 = pq;
