@@ -25,7 +25,11 @@ public class Palavra {
         palavra = novaPalavra.trim();
         String p = "";
         for(int i = 0; i < novaPalavra.length(); i++){
-            p += " _";
+            if(palavra.charAt((i/2)) == "-".charAt(0)){
+                p += " -";
+            } else {
+                p += " _";
+            }
         }
         palavraDisplay = p.trim();
         palavraNormal = normalizar(palavra);
