@@ -101,7 +101,10 @@ public class Jogo {
     }
 
 
-    public void setP1(Palavra pq){ p1 = pq; }
+    public void setP1(Palavra pq){
+        p1 = pq;
+
+    }
 
     public void setP2(Palavra pq){
         p2 = pq;

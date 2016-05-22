@@ -11,12 +11,14 @@ import java.util.regex.Pattern;
  */
 public class Palavra {
 
-    //exemplo: ABACATE
+    //exemplo: ANÃO
     private String palavra;
 
-    //exemplo: A_A_A_E
+    //exemplo: _ _ _ _
+    //exemplo: A _ Ã _
     String palavraDisplay;
 
+    //exemplo: ANAO
     String palavraNormal;
 
     boolean palavraCompleta = true;
@@ -25,7 +27,7 @@ public class Palavra {
         palavra = novaPalavra.trim();
         String p = "";
         for(int i = 0; i < novaPalavra.length(); i++){
-            if(palavra.charAt((i/2)) == "-".charAt(0)){
+            if(palavra.charAt(i) == "-".charAt(0)){
                 p += " -";
             } else {
                 p += " _";
