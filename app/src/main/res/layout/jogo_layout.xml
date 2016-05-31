@@ -64,7 +64,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="1 de 5"
+        android:text="0 de 5"
         android:id="@+id/qtdVidas"
         android:layout_below="@+id/jogada"
         android:layout_toRightOf="@+id/textView2"
@@ -143,6 +143,7 @@
         android:layout_alignRight="@+id/textView8"
         android:layout_alignEnd="@+id/textView8"
         android:maxLength="1"
+        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-ÇçãÃâÂÁáÀàéÉÈèêÊíÍìÌóÓÒò"
         android:hint="Digite uma letra" />
 
     <EditText
@@ -156,6 +157,7 @@
         android:layout_alignRight="@+id/textView8"
         android:layout_alignEnd="@+id/textView8"
         android:autoText="false"
+        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-ÇçãÃâÂÁáÀàéÉÈèêÊíÍìÌóÓÒò"
         android:hint="Digite a Palavra 1" />
 
     <Button
@@ -177,6 +179,7 @@
         android:layout_alignParentStart="true"
         android:layout_toLeftOf="@+id/textView9"
         android:layout_toStartOf="@+id/textView9"
+        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-ÇçãÃâÂÁáÀàéÉÈèêÊíÍìÌóÓÒò"
         android:hint="Digite a Palavra 2" />
 
     <Button

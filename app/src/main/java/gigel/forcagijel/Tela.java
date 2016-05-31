@@ -33,6 +33,8 @@ public class Tela extends AppCompatActivity {
 
     RelativeLayout background;
 
+    boolean fimDeJogo = false;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,20 +61,20 @@ public class Tela extends AppCompatActivity {
     }
 
     public void clickChute(View view){
-        if(jogo.jogadorAtual.vivo) {
+        if(! fimDeJogo) {
             String chute = chuteTela.getText().toString();
             chuteTela.setText("");
             RespostaTela r = jogo.chutar(chute);
             atualizarTela(r);
             chutesTela.setText(Arrays.toString(jogo.chutes.toArray()));
         } else {
-            mostrarMensagem("Você Já está morto");
+            mostrarMensagem("O reu está morto, todos perderam :(");
         }
     }
 
     public void clickTentativa(View view){
 
-        if(jogo.jogadorAtual.vivo) {
+        if(! fimDeJogo) {
             String tentativa1 = tentativa1Tela.getText().toString();
             String tentativa2 = tentativa2Tela.getText().toString();
             tentativa1Tela.setText("");
@@ -82,7 +84,7 @@ public class Tela extends AppCompatActivity {
                 atualizarTela(r);
             }
         } else {
-            mostrarMensagem("Você Já está morto");
+            mostrarMensagem("O reu está morto, todos perderam :(");
         }
     }
 
@@ -90,6 +92,8 @@ public class Tela extends AppCompatActivity {
         p1Tela.setText(rt.oculta1);
         p2Tela.setText(rt.oculta2);
         qtdVidasTela.setText(rt.vidas + " de 5");
+
+        if(rt.vidas == 5){ fimDeJogo = true; }
 
         if(rt.acertou){
             jogadaTela.setText("Acertou");

@@ -56,16 +56,28 @@ public class Jogo {
                 acertou = true;
             } else {
                 reu.perderVida();
+
+                if(! reu.vivo){
+                    ja.morrer();
+                    jb.morrer();
+                    jc.morrer();
+                    jogadorAtual.morrer();
+                }
             }
 
             if (jogadorAtual.vivo && reu.vivo) {
                 vivo = true;
             } else{
-                tela.mostrarMensagem("Jogador " + jogadorAtual.nome + " MORREU!!");
+                if( (! ja.vivo) && (! jb.vivo) && (! jc.vivo)  ){
+                    tela.mostrarMensagem("O reu está morto, todos perderam :(");
+                } else {
+                    tela.mostrarMensagem("Jogador " + jogadorAtual.nome + " MORREU!!");
+                }
+
             }
 
             if (p1.palavraCompleta && p2.palavraCompleta) {
-                tela.mostrarMensagem("Jogador "+jogadorAtual.nome+" Ganhou!!");
+                tela.mostrarMensagem("Jogador " + jogadorAtual.nome +" Ganhou!!");
             }
 
             return new RespostaTela(r1.oculta, r2.oculta, acertou, vivo, reu.vidasPerdidas);
@@ -81,7 +93,7 @@ public class Jogo {
         boolean acertou = false;
         boolean vivo = false;
 
-        if(r1.acertou || r2.acertou){
+        if(r1.acertou && r2.acertou){
             acertou = true;
         } else{
             jogadorAtual.morrer();

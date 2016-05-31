@@ -21,7 +21,7 @@ public class Palavra {
     //exemplo: ANAO
     String palavraNormal;
 
-    boolean palavraCompleta = true;
+    boolean palavraCompleta = false;
 
     public Palavra(String novaPalavra){
         palavra = novaPalavra.trim();
@@ -44,35 +44,41 @@ public class Palavra {
     }
 
     public RespostaPalavra verificarChute(String chute){
-        boolean acertou = false;
-        String p = palavraDisplay;
+        if(! palavraCompleta) {
+            boolean acertou = false;
+            String p = palavraDisplay;
 
-        chute = normalizar(chute);
-        if(! chute.equals("")) {
-            for (int i = 0; i < palavraNormal.length(); i++) {
-                if (palavraNormal.toLowerCase().charAt(i) == chute.toLowerCase().charAt(0)) {
-                    acertou = true;
-                    p = (p.substring(0, (i * 2)) + palavra.toUpperCase().charAt(i) + p.substring((i * 2) + 1, p.length()));
+            chute = normalizar(chute);
+            if (!chute.equals("")) {
+                for (int i = 0; i < palavraNormal.length(); i++) {
+                    if (palavraNormal.toLowerCase().charAt(i) == chute.toLowerCase().charAt(0)) {
+                        acertou = true;
+                        p = (p.substring(0, (i * 2)) + palavra.toUpperCase().charAt(i) + p.substring((i * 2) + 1, p.length()));
+                    }
                 }
             }
-        }
 
-        palavraDisplay = p;
+            palavraDisplay = p;
 
-        palavraCompleta = true;
-        for(int i = 0; i < palavraDisplay.length(); i++){
-            if(palavraDisplay.charAt(i) == "_".charAt(0)){
-                palavraCompleta = false;
+            palavraCompleta = true;
+            for (int i = 0; i < palavraDisplay.length(); i++) {
+                if (palavraDisplay.charAt(i) == "_".charAt(0)) {
+                    palavraCompleta = false;
+                }
             }
+
+            if (palavraCompleta) {
+                palavraDisplay = palavra;
+            }
+
+            RespostaPalavra r = new RespostaPalavra(palavraDisplay, acertou);
+
+            return r;
+        } else {
+            RespostaPalavra r = new RespostaPalavra(palavraDisplay, true);
+
+            return r;
         }
-
-        if(palavraCompleta){
-            palavraDisplay = palavra;
-        }
-
-        RespostaPalavra r = new RespostaPalavra(palavraDisplay, acertou);
-
-        return r;
     }
 
     public RespostaPalavra verificarTentativa(String tentativa){

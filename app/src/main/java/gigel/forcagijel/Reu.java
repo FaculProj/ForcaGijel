@@ -14,9 +14,10 @@ public class Reu {
     }
 
     public boolean perderVida(){
-        if(vidasPerdidas < 5){
+        if(vidasPerdidas < 4){
             vidasPerdidas++;
         } else {
+            vidasPerdidas++;
             vivo = false;
         }
 

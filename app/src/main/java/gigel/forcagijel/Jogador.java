@@ -6,12 +6,9 @@ package gigel.forcagijel;
 public class Jogador {
 
     String nome;
-    String status;
     boolean vivo;
 
-
     public Jogador(String name){
-        status = "vivo";
         nome = name;
         vivo = true;
     }
